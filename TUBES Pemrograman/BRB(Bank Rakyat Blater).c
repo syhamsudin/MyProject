@@ -62,7 +62,8 @@ void daftarPengguna(Pengguna pengguna[], int* jumlah) {
     penggunaBaru.username[strcspn(penggunaBaru.username, "\n")] = '\0';  // Membersihkan karakter baris baru
     
     system("cls");
-    for (int i = 0; i < *jumlah; i++) {
+    int i;
+    for (i = 0; i < *jumlah; i++) {
         if (strcmp(pengguna[i].username, penggunaBaru.username) == 0) {
         	printf("=====================REGISTER====================\n\n");
         	printf("-------------------------------------------------\n");
@@ -131,8 +132,8 @@ int loginPengguna(Pengguna pengguna[], int jumlah, char namaUser[USERNAME_LENGTH
     printf("Masukkan kata sandi: ");
     getPassword(kataSandi);
     printf("\n");
-    
-    for (int i = 0; i < jumlah; i++) {
+    int i;
+    for (i = 0; i < jumlah; i++) {
         if (strcmp(pengguna[i].username, nama) == 0 && strcmp(pengguna[i].password, kataSandi) == 0) {
             strcpy(namaUser, nama);
             return 1;
@@ -171,14 +172,16 @@ void simpanPengguna(Pengguna pengguna[], int jumlah) {
 void lihatPengguna(Pengguna pengguna[], int jumlah) {
     printf("==============Pengguna BRB Terdaftar==============\n\n");
     printf("--------------------------------------------------\n");
-    for (int i = 0; i < jumlah; i++) {
+    int i;
+    for (i = 0; i < jumlah; i++) {
         printf("%d. %s\n", i + 1, pengguna[i].username);
     }
     printf("--------------------------------------------------\n");
 }
 
 void tambahSaldo(Pengguna pengguna[], int jumlah, const char namaUser[USERNAME_LENGTH], float jumlahSaldo) {
-    for (int i = 0; i < jumlah; i++) {
+    int i;
+	for (i = 0; i < jumlah; i++) {
         if (strcmp(pengguna[i].username, namaUser) == 0) {
             pengguna[i].saldo += jumlahSaldo;
             printf("\n--------------------------------------------------\n");
@@ -190,7 +193,8 @@ void tambahSaldo(Pengguna pengguna[], int jumlah, const char namaUser[USERNAME_L
 }
 
 void tampilkanSaldo(const char namaUser[USERNAME_LENGTH], Pengguna pengguna[], int jumlah) {
-    for (int i = 0; i < jumlah; i++) {
+    int i;
+	for (i = 0; i < jumlah; i++) {
         if (strcmp(pengguna[i].username, namaUser) == 0) {
             printf("nama: %s\n", pengguna[i].username);
             printf("Saldo saat ini: Rp.%.2f\n", pengguna[i].saldo);
@@ -215,7 +219,8 @@ void transferSaldo(Pengguna pengguna[], int jumlah, const char namaUser[USERNAME
     
     int foundSender = -1, foundReceiver = -1;
 
-    for (int i = 0; i < jumlah; i++) {
+    int i;
+	for (i = 0; i < jumlah; i++) {
         if (strcmp(pengguna[i].username, namaUser) == 0) {
             foundSender = i;
         }
@@ -247,8 +252,8 @@ void beli(Pengguna pengguna[], int jumlah, const char namaUser[USERNAME_LENGTH])
     getchar();  // Membersihkan karakter baris baru dari buffer
     printf("\n------------------------------------------------\n");
     
-
-    for (int i = 0; i < jumlah; i++) {
+	int i;
+    for (i = 0; i < jumlah; i++) {
         if (strcmp(pengguna[i].username, namaUser) == 0) {
             if (pengguna[i].saldo < jumlahPembelian) {
                 printf("Saldo tidak mencukupi untuk pembelian.\n");
